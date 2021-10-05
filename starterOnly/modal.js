@@ -61,7 +61,7 @@ function checkLastName() {
 
 function checkCheckbox() {
   const checkbox = document.getElementById("checkbox1");
-  const checkboxChecked = checkbox.checked;
+
   if (checkbox.checked === false) {
     document.getElementsByClassName("error-msg")[5].style.display = "block";
     return false;
@@ -81,7 +81,7 @@ form.addEventListener("submit", (e) => {
   ) {
     e.preventDefault();
   } else {
-    alert("thank you");
+    alert("Merci ! Votre réservation a été reçue.");
   }
 });
 
@@ -128,12 +128,12 @@ form.addEventListener("submit", (e) => {
 //   }
 // });
 
-// // check number of tournaments
-
+// check number of tournaments
+// const inputValueQuantity = document.getElementById("quantity").value.trim();
 // form.addEventListener("click", () => {
 //   const inputValueQuantity = document.getElementById("quantity").value.trim();
 
-//   if (inputValueQuantity == "") {
+//   if (inputValueQuantity.length > 0) {
 //     document.getElementsByClassName("error-msg")[3].style.display = "block";
 //   } else {
 //     document.getElementsByClassName("error-msg")[3].style.display = "none";
