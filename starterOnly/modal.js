@@ -34,13 +34,11 @@ closeModal.addEventListener("click", function () {
 function checkFirstName() {
   const inputValueFirst = document.getElementById("first").value.trim();
 
-  if (inputValueFirst.length < 2) {
-    document.getElementsByClassName("error-msg")[0].style.display = "block";
-    return false;
-  } else {
-    document.getElementsByClassName("error-msg")[0].style.display = "none";
-    return true;
-  }
+  const isFirstValid = inputValueFirst && inputValueFirst.length >= 2;
+  document.getElementsByClassName("error-msg")[0].style.display = isFirstValid
+    ? "none"
+    : "block";
+  return isFirstValid;
 }
 
 // check if last name is valid
@@ -48,13 +46,11 @@ function checkFirstName() {
 function checkLastName() {
   const inputValueLast = document.getElementById("last").value.trim();
 
-  if (inputValueLast.length < 2) {
-    document.getElementsByClassName("error-msg")[1].style.display = "block";
-    return false;
-  } else {
-    document.getElementsByClassName("error-msg")[1].style.display = "none";
-    return true;
-  }
+  const isLastValid = inputValueLast && inputValueLast.length >= 2;
+  document.getElementsByClassName("error-msg")[1].style.display = isLastValid
+    ? "none"
+    : "block";
+  return isLastValid;
 }
 
 // check if the first checkbox is checked
@@ -62,26 +58,27 @@ function checkLastName() {
 function checkCheckbox() {
   const checkbox = document.getElementById("checkbox1");
 
-  if (checkbox.checked === false) {
-    document.getElementsByClassName("error-msg")[5].style.display = "block";
-    return false;
-  } else {
-    document.getElementsByClassName("error-msg")[5].style.display = "none";
-    return true;
-  }
+  const isCheckboxValid = checkbox && checkbox.checked;
+  document.getElementsByClassName("error-msg")[5].style.display =
+    isCheckboxValid ? "none" : "block";
+  return isCheckboxValid;
 }
 
 //prevent form to close if errors
 
 form.addEventListener("submit", (e) => {
-  if (
-    checkFirstName() == false &&
-    checkLastName() == false &&
-    checkboxChecked() == false
-  ) {
-    e.preventDefault();
+  // A faire d'office peu importe le résultat de la validité du formulaire
+  e.preventDefault();
+
+  let isFormValid = true;
+  isFormValid = checkFirstName() && isFormValid;
+  isFormValid = checkLastName() && isFormValid;
+  isFormValid = checkCheckbox() && isFormValid;
+
+  if (isFormValid) {
+    alert("Le formulaire a bien été validé.");
   } else {
-    alert("Merci ! Votre réservation a été reçue.");
+    alert("Une erreur a été rencontrée.");
   }
 });
 
