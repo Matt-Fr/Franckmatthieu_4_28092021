@@ -13,6 +13,8 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const form = document.getElementById("form");
 const email = document.getElementById("email");
+const content = document.querySelector(".content");
+const popup = document.querySelector(".content-2");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -29,14 +31,6 @@ const closeModal = document.querySelector(".close");
 closeModal.addEventListener("click", function () {
   modalbg.style.display = "none";
 });
-
-// //close second modal form
-// const content2 = document.getElementsByClassName("content-2")[0];
-// const closeModal2 = document.querySelector(".close")[1];
-
-// closeModal2.addEventListener("click", function () {
-//   modalbg.style.display = "none";
-// });
 
 // check if first name is valid
 
@@ -95,7 +89,6 @@ function checkCheckbox() {
 form.addEventListener("submit", (e) => {
   // A faire d'office peu importe le résultat de la validité du formulaire
   e.preventDefault();
-  const popup = document.querySelector(".content-2");
 
   let isFormValid = true;
   isFormValid = checkFirstName() && isFormValid;
@@ -103,10 +96,18 @@ form.addEventListener("submit", (e) => {
   isFormValid = checkCheckbox() && isFormValid;
 
   if (isFormValid) {
+    content.style.display = "none";
     popup.style.display = "block";
   } else {
     alert("Une erreur a été rencontrée.");
   }
+});
+
+// //close modal form with popup
+
+const closePopup = document.querySelector("#close-popup");
+closePopup.addEventListener("click", function () {
+  modalbg.style.display = "none";
 });
 
 // error message firstName
