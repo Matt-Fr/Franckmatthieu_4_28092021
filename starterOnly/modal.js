@@ -73,6 +73,19 @@ function checkLastName() {
 // return isEmailValid;
 // }
 
+// check if number of tournament is not empty
+
+function checkTournament() {
+  const nbTournament = document.getElementById("quantity");
+  const inputValueQuantity = nbTournament.value.trim();
+  const isTournamentValid =
+    inputValueQuantity && inputValueQuantity.length !== 0;
+
+  document.getElementsByClassName("error-msg")[4].style.display =
+    isTournamentValid ? "none" : "block";
+  return isTournamentValid;
+}
+
 // check if the first checkbox is checked
 
 function checkCheckbox() {
@@ -93,6 +106,7 @@ form.addEventListener("submit", (e) => {
   let isFormValid = true;
   isFormValid = checkFirstName() && isFormValid;
   isFormValid = checkLastName() && isFormValid;
+  isFormValid = checkTournament() && isFormValid;
   isFormValid = checkCheckbox() && isFormValid;
 
   if (isFormValid) {
