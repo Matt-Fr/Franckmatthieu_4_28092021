@@ -139,7 +139,8 @@ main {
   font-family: var(--font-slab);
 }
 
-/* Modal form */
+/* Modal 
+ */
 
 .button {
   background: #fe142f;
@@ -183,6 +184,26 @@ main {
   position: relative;
   color: #fff;
   padding-top: 10px;
+}
+
+.content-2 {
+  margin: 5% auto;
+  width: 100%;
+  max-width: 500px;
+  animation-name: modalopen;
+  animation-duration: var(--modal-duration);
+  background: grey;
+  border-radius: 10px;
+  overflow: hidden;
+  position: absolute;
+  color: #fff;
+  padding-top: 10px;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  display: none;
 }
 
 .modal-body {
@@ -458,6 +479,9 @@ input[data-error]::after {
 }
 .hero-img {
   grid-column: span 8;
+}
+#img-player {
+  object-fit: cover;
 }
 .hero-img img {
   width: 100%;

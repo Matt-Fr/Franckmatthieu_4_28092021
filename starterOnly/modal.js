@@ -12,6 +12,7 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const form = document.getElementById("form");
+const email = document.getElementById("email");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -28,6 +29,14 @@ const closeModal = document.querySelector(".close");
 closeModal.addEventListener("click", function () {
   modalbg.style.display = "none";
 });
+
+// //close second modal form
+// const content2 = document.getElementsByClassName("content-2")[0];
+// const closeModal2 = document.querySelector(".close")[1];
+
+// closeModal2.addEventListener("click", function () {
+//   modalbg.style.display = "none";
+// });
 
 // check if first name is valid
 
@@ -53,6 +62,23 @@ function checkLastName() {
   return isLastValid;
 }
 
+// check if email is valid
+
+// function isEmail(email) {
+//   return /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+//     email
+//   );
+// }
+// const emailValue = document.getElementById("email").value.trim();
+// function checkEmail(isEmail(emailValue)){
+
+// const isEmailValid = emailValue && isEmail(emailValue)
+// document.getElementsByClassName("error-msg")[2].style.display = isEmailValid
+// ? "none"
+// : "block";
+// return isEmailValid;
+// }
+
 // check if the first checkbox is checked
 
 function checkCheckbox() {
@@ -69,6 +95,7 @@ function checkCheckbox() {
 form.addEventListener("submit", (e) => {
   // A faire d'office peu importe le résultat de la validité du formulaire
   e.preventDefault();
+  const popup = document.querySelector(".content-2");
 
   let isFormValid = true;
   isFormValid = checkFirstName() && isFormValid;
@@ -76,7 +103,7 @@ form.addEventListener("submit", (e) => {
   isFormValid = checkCheckbox() && isFormValid;
 
   if (isFormValid) {
-    alert("Le formulaire a bien été validé.");
+    popup.style.display = "block";
   } else {
     alert("Une erreur a été rencontrée.");
   }
