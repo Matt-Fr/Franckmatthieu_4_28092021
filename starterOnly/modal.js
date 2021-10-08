@@ -15,6 +15,7 @@ const form = document.getElementById("form");
 const email = document.getElementById("email");
 const content = document.querySelector(".content");
 const popup = document.querySelector(".content-2");
+const birthdate = document.getElementById("birthdate");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -72,6 +73,17 @@ function checkEmail() {
   return isEmailValid;
 }
 
+//check birthdate
+
+function checkBirthdate() {
+  const birthday = document.getElementById("birthdate").value;
+  const today = Date.now;
+  const isBirthdateValid = birthday && birthday < today;
+  document.getElementsByClassName("error-msg")[3].style.display =
+    isBirthdateValid ? "none" : "block";
+  return isBirthdateValid;
+}
+
 // check if number of tournament is not empty
 
 function checkTournament() {
@@ -107,11 +119,13 @@ form.addEventListener("submit", (e) => {
   isFormValid = checkLastName() && isFormValid;
   isFormValid = checkTournament() && isFormValid;
   isFormValid = checkEmail() && isFormValid;
+  isFormValid = checkBirthdate() && isFormValid;
   isFormValid = checkCheckbox() && isFormValid;
 
   if (isFormValid) {
     content.style.display = "none";
     popup.style.display = "block";
+    form.reset(); //ne marche pas
   } else {
     // alert("Une erreur a été rencontrée.");
   }
@@ -123,83 +137,3 @@ const closePopup = document.querySelector("#close-popup");
 closePopup.addEventListener("click", function () {
   modalbg.style.display = "none";
 });
-
-// error message firstName
-
-// form.addEventListener("click", () => {
-//   const inputValueFirst = document.getElementById("first").value.trim();
-
-//   if (inputValueFirst.length < 2) {
-//     document.getElementsByClassName("error-msg")[0].style.display = "block";
-//     return false;
-//   } else {
-//     document.getElementsByClassName("error-msg")[0].style.display = "none";
-//     return true;
-//   }
-// });
-
-// // error message lastname
-
-// form.addEventListener("click", () => {
-//   const inputValueLast = document.getElementById("last").value.trim();
-
-//   if (inputValueLast.length < 2) {
-//     document.getElementsByClassName("error-msg")[1].style.display = "block";
-//   } else {
-//     document.getElementsByClassName("error-msg")[1].style.display = "none";
-//   }
-// });
-
-// //email adress regex
-// const inputValueEmail = document.getElementById("email").value;
-
-// function isEmail(inputValueEmail) {
-//   return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
-//     inputValueEmail
-//   );
-// }
-
-// form.addEventListener("click", () => {
-//   if (!isEmail(inputValueEmail)) {
-//     document.getElementsByClassName("error-msg")[2].style.display = "block";
-//   } else {
-//     document.getElementsByClassName("error-msg")[2].style.display = "none";
-//   }
-// });
-
-// check number of tournaments
-// const inputValueQuantity = document.getElementById("quantity").value.trim();
-// form.addEventListener("click", () => {
-//   const inputValueQuantity = document.getElementById("quantity").value.trim();
-
-//   if (inputValueQuantity.length > 0) {
-//     document.getElementsByClassName("error-msg")[3].style.display = "block";
-//   } else {
-//     document.getElementsByClassName("error-msg")[3].style.display = "none";
-//   }
-// });
-
-// //check Age
-
-// const birthdate = document.getElementById("birthdate").value;
-
-// form.addEventListener("click", () => {
-//   if (birthdate.length !== 10) {
-//     document.getElementsByClassName("error-msg")[4].style.display = "block";
-//   } else {
-//     document.getElementsByClassName("error-msg")[4].style.display = "none";
-//   }
-// });
-
-// //checkbox
-
-// form.addEventListener("click", () => {
-//   const checkbox = document.getElementById("checkbox1");
-//   // const checkboxChecked = checkbox.checked
-
-//   if (checkbox.checked === false) {
-//     document.getElementsByClassName("error-msg")[5].style.display = "block";
-//   } else {
-//     document.getElementsByClassName("error-msg")[5].style.display = "none";
-//   }
-// });
