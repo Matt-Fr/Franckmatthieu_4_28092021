@@ -58,20 +58,19 @@ function checkLastName() {
 
 // check if email is valid
 
-// function isEmail(email) {
-//   return /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
-//     email
-//   );
-// }
-// const emailValue = document.getElementById("email").value.trim();
-// function checkEmail(isEmail(emailValue)){
-
-// const isEmailValid = emailValue && isEmail(emailValue)
-// document.getElementsByClassName("error-msg")[2].style.display = isEmailValid
-// ? "none"
-// : "block";
-// return isEmailValid;
-// }
+function isEmail(email) {
+  return /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+    email
+  );
+}
+function checkEmail() {
+  const emailValue = document.getElementById("email").value.trim();
+  const isEmailValid = emailValue && isEmail(emailValue);
+  document.getElementsByClassName("error-msg")[2].style.display = isEmailValid
+    ? "none"
+    : "block";
+  return isEmailValid;
+}
 
 // check if number of tournament is not empty
 
@@ -107,13 +106,14 @@ form.addEventListener("submit", (e) => {
   isFormValid = checkFirstName() && isFormValid;
   isFormValid = checkLastName() && isFormValid;
   isFormValid = checkTournament() && isFormValid;
+  isFormValid = checkEmail() && isFormValid;
   isFormValid = checkCheckbox() && isFormValid;
 
   if (isFormValid) {
     content.style.display = "none";
     popup.style.display = "block";
   } else {
-    alert("Une erreur a été rencontrée.");
+    // alert("Une erreur a été rencontrée.");
   }
 });
 
