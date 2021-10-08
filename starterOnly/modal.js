@@ -77,8 +77,8 @@ function checkEmail() {
 
 function checkBirthdate() {
   const birthday = document.getElementById("birthdate").value;
-  const today = Date.now;
-  const isBirthdateValid = birthday && birthday < today;
+  // let today = new Date();
+  const isBirthdateValid = birthday && birthday !== "";
   document.getElementsByClassName("error-msg")[3].style.display =
     isBirthdateValid ? "none" : "block";
   return isBirthdateValid;
@@ -131,7 +131,7 @@ form.addEventListener("submit", (e) => {
   }
 });
 
-// //close modal form with popup
+//close modal form with popup
 
 const closePopup = document.querySelector("#close-popup");
 closePopup.addEventListener("click", function () {
