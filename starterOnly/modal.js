@@ -1,11 +1,8 @@
-function editNav() {
+const editNav = () => {
   var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
-  }
-}
+  x.className =
+    x.className === "topnav" ? `${x.className} responsive` : "topnav";
+};
 
 // DOM Elements
 const modalbg = document.querySelector(".bground");
