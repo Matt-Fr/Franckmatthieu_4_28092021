@@ -78,9 +78,10 @@ function checkEmail() {
 //check birthdate
 
 function checkBirthdate() {
-  const birthday = document.getElementById("birthdate").value;
-  // let today = new Date();
-  const isBirthdateValid = birthday && birthday !== "";
+  const birthday = new Date(document.getElementById("birthdate").value);
+  let today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const isBirthdateValid = birthday && birthday < today;
   document.getElementsByClassName("error-msg")[3].style.display =
     isBirthdateValid ? "none" : "block";
   return isBirthdateValid;
