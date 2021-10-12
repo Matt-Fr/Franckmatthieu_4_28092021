@@ -23,6 +23,8 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
+  content.style.display = "block";
+  popup.style.display = "none";
 }
 
 // Close modal form
