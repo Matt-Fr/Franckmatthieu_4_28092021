@@ -111,7 +111,6 @@ function checkCheckbox() {
 //prevent form to close if errors
 
 form.addEventListener("submit", (e) => {
-  // A faire d'office peu importe le résultat de la validité du formulaire
   e.preventDefault();
 
   let isFormValid = true;
@@ -125,7 +124,7 @@ form.addEventListener("submit", (e) => {
   if (isFormValid) {
     content.style.display = "none";
     popup.style.display = "block";
-    form.reset(); //ne marche pas
+    form.reset();
   } else {
     // alert("Une erreur a été rencontrée.");
   }
