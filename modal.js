@@ -49,7 +49,7 @@ function checkFirstName() {
 function checkLastName() {
   const inputValueLast = document.getElementById("last").value.trim();
 
-  const isLastValid = inputValueLast && inputValueLast.length >= 2;
+  const isLastValid = inputValueLast.length >= 2;
   document.getElementsByClassName("error-msg")[1].style.display = isLastValid
     ? "none"
     : "block";
@@ -65,7 +65,7 @@ function isEmail(email) {
 }
 function checkEmail() {
   const emailValue = document.getElementById("email").value.trim();
-  const isEmailValid = emailValue && isEmail(emailValue);
+  const isEmailValid = isEmail(emailValue);
   document.getElementsByClassName("error-msg")[2].style.display = isEmailValid
     ? "none"
     : "block";
@@ -78,7 +78,7 @@ function checkBirthdate() {
   const birthday = new Date(document.getElementById("birthdate").value);
   let today = new Date();
   today.setHours(0, 0, 0, 0);
-  const isBirthdateValid = birthday && birthday < today;
+  const isBirthdateValid = birthday < today;
   document.getElementsByClassName("error-msg")[3].style.display =
     isBirthdateValid ? "none" : "block";
   return isBirthdateValid;
@@ -89,8 +89,7 @@ function checkBirthdate() {
 function checkTournament() {
   const nbTournament = document.getElementById("quantity");
   const inputValueQuantity = nbTournament.value.trim();
-  const isTournamentValid =
-    inputValueQuantity && inputValueQuantity.length !== 0;
+  const isTournamentValid = inputValueQuantity.length !== 0;
 
   document.getElementsByClassName("error-msg")[4].style.display =
     isTournamentValid ? "none" : "block";
@@ -102,7 +101,7 @@ function checkTournament() {
 function checkCheckbox() {
   const checkbox = document.getElementById("checkbox1");
 
-  const isCheckboxValid = checkbox && checkbox.checked;
+  const isCheckboxValid = checkbox.checked;
   document.getElementsByClassName("error-msg")[5].style.display =
     isCheckboxValid ? "none" : "block";
   return isCheckboxValid;
