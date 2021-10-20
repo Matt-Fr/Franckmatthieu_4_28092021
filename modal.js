@@ -37,7 +37,7 @@ closeModal.addEventListener("click", function () {
 function checkFirstName() {
   const inputValueFirst = document.getElementById("first").value.trim();
 
-  const isFirstValid = inputValueFirst && inputValueFirst.length >= 2;
+  const isFirstValid = inputValueFirst.length >= 2;
   document.getElementsByClassName("error-msg")[0].style.display = isFirstValid
     ? "none"
     : "block";
